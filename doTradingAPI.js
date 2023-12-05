@@ -3,9 +3,11 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const doTradingSchema = require('./doTradingSchema');
+const cors = require('cors'); // Import the cors middleware
 
 const app = express();
 const port = 3000;
+app.use(cors());
 
 app.use(bodyParser.json());
 
