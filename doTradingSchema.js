@@ -17,7 +17,7 @@ const promisePool = pool.promise();
 const doTradingSchema = {
   createApplicant: async (applicant) => {
     const [rows] = await promisePool.execute(
-      'INSERT INTO applicants (ref_no, cust_name, financing_amount, tenure, profit_rate, profit_amount, selling_price, mobile_no, product_id, operation_remarks) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?)',
+      'INSERT INTO applicants (ref_no, cust_name, financing_amount, tenure, profit_rate, profit_amount, selling_price, mobile_no, product_id, operation_remarks,status) VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?,?)',
       [
         applicant.ref_no,
         applicant.cust_name,
@@ -28,7 +28,9 @@ const doTradingSchema = {
         applicant.selling_price,
         applicant.mobile_no,
         applicant.product_id,
-        applicant.operation_remarks
+        applicant.operation_remarks,
+        applicant.status
+
       ]
     );
     return rows.insertId;

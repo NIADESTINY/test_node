@@ -38,6 +38,7 @@ app.post('/applicants', async (req, res) => {
       mobile_no,
       product_id: 'D4',
       operation_remarks: '-',
+      status:0
     };
 
     const applicantId = await doTradingSchema.createApplicant(newApplicant);
