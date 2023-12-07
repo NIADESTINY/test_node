@@ -23,7 +23,7 @@ app.post('/applicants', async (req, res) => {
     } = req.body;
 
     const profit_rate = 4.9;
-
+    const date_create = new Date(); // Capture the current date and time
     const profit_amount = financing_amount * (profit_rate / 100);
     const selling_price = financing_amount + profit_amount;
 
@@ -38,13 +38,15 @@ app.post('/applicants', async (req, res) => {
       mobile_no,
       product_id: 'D4',
       operation_remarks: '-',
-      status:0
+      status:0,
+      date_create
     };
 
     const applicantId = await doTradingSchema.createApplicant(newApplicant);
 
     // Send a success response
     res.status(201).json({ message: 'Applicant created successfully', id: applicantId });
+    console.log(date_create,'this is the real time')
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: 'Internal Server Error' });
